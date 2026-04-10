@@ -78,7 +78,7 @@
     transform: translateY(-50%);
   }
   .hero::before { left: 0; }
-  .hero::after { right: 0; }
+  .hero::after  { right: 0; }
 
   .hero-eyebrow {
     font-family: 'Cinzel', serif;
@@ -125,10 +125,7 @@
     background: linear-gradient(to right, transparent, var(--gold), transparent);
     opacity: 0.5;
   }
-  .divider-gem {
-    font-size: 16px;
-    color: var(--gold);
-  }
+  .divider-gem { font-size: 16px; color: var(--gold); }
 
   .filters {
     display: flex;
@@ -213,14 +210,14 @@
     opacity: 0.06;
   }
 
-  .tiana .card-inner::before { background: linear-gradient(to right, var(--tiana), var(--tiana-mid)); }
-  .tiana .card-inner::after  { background: var(--tiana); }
-  .diana .card-inner::before { background: linear-gradient(to right, var(--diana), var(--diana-mid)); }
-  .diana .card-inner::after  { background: var(--diana); }
-  .ariel .card-inner::before { background: linear-gradient(to right, var(--ariel), var(--ariel-mid)); }
-  .ariel .card-inner::after  { background: var(--ariel); }
-  .merida .card-inner::before { background: linear-gradient(to right, var(--merida), var(--merida-mid)); }
-  .merida .card-inner::after  { background: var(--merida); }
+  .tiana .card-inner::before        { background: linear-gradient(to right, var(--tiana), var(--tiana-mid)); }
+  .tiana .card-inner::after         { background: var(--tiana); }
+  .diana .card-inner::before        { background: linear-gradient(to right, var(--diana), var(--diana-mid)); }
+  .diana .card-inner::after         { background: var(--diana); }
+  .ariel .card-inner::before        { background: linear-gradient(to right, var(--ariel), var(--ariel-mid)); }
+  .ariel .card-inner::after         { background: var(--ariel); }
+  .merida .card-inner::before       { background: linear-gradient(to right, var(--merida), var(--merida-mid)); }
+  .merida .card-inner::after        { background: var(--merida); }
   .all-princesses .card-inner::before { background: linear-gradient(to right, var(--all), var(--all-mid)); }
   .all-princesses .card-inner::after  { background: var(--all); }
 
@@ -232,10 +229,10 @@
     margin-bottom: 1.2rem;
   }
 
-  .tiana .card-emblem        { background: var(--tiana-light); }
-  .diana .card-emblem        { background: var(--diana-light); }
-  .ariel .card-emblem        { background: var(--ariel-light); }
-  .merida .card-emblem       { background: var(--merida-light); }
+  .tiana .card-emblem          { background: var(--tiana-light); }
+  .diana .card-emblem          { background: var(--diana-light); }
+  .ariel .card-emblem          { background: var(--ariel-light); }
+  .merida .card-emblem         { background: var(--merida-light); }
   .all-princesses .card-emblem { background: var(--all-light); }
 
   .card-num {
@@ -256,10 +253,10 @@
     display: block;
   }
 
-  .tiana .card-princess-name         { color: var(--tiana); }
-  .diana .card-princess-name         { color: var(--diana); }
-  .ariel .card-princess-name         { color: var(--ariel); }
-  .merida .card-princess-name        { color: var(--merida); }
+  .tiana .card-princess-name          { color: var(--tiana); }
+  .diana .card-princess-name          { color: var(--diana); }
+  .ariel .card-princess-name          { color: var(--ariel); }
+  .merida .card-princess-name         { color: var(--merida); }
   .all-princesses .card-princess-name { color: var(--all); }
 
   .card-quote {
@@ -299,15 +296,15 @@
     background: transparent;
   }
 
-  .tiana .btn-copy         { color: var(--tiana);  border-color: var(--tiana);  }
-  .tiana .btn-copy:hover   { background: var(--tiana);  color: #fff; }
-  .diana .btn-copy         { color: var(--diana);  border-color: var(--diana);  }
-  .diana .btn-copy:hover   { background: var(--diana);  color: #fff; }
-  .ariel .btn-copy         { color: var(--ariel);  border-color: var(--ariel);  }
-  .ariel .btn-copy:hover   { background: var(--ariel);  color: #fff; }
-  .merida .btn-copy        { color: var(--merida); border-color: var(--merida); }
-  .merida .btn-copy:hover  { background: var(--merida); color: #fff; }
-  .all-princesses .btn-copy       { color: var(--all); border-color: var(--all); }
+  .tiana .btn-copy              { color: var(--tiana);  border-color: var(--tiana);  }
+  .tiana .btn-copy:hover        { background: var(--tiana);  color: #fff; }
+  .diana .btn-copy              { color: var(--diana);  border-color: var(--diana);  }
+  .diana .btn-copy:hover        { background: var(--diana);  color: #fff; }
+  .ariel .btn-copy              { color: var(--ariel);  border-color: var(--ariel);  }
+  .ariel .btn-copy:hover        { background: var(--ariel);  color: #fff; }
+  .merida .btn-copy             { color: var(--merida); border-color: var(--merida); }
+  .merida .btn-copy:hover       { background: var(--merida); color: #fff; }
+  .all-princesses .btn-copy     { color: var(--all);    border-color: var(--all);    }
   .all-princesses .btn-copy:hover { background: var(--all); color: #fff; }
 
   .nav-row {
@@ -478,46 +475,46 @@
 
 <script>
 const ALL_MESSAGES = [
-  { num:1,  cat:'tiana',  cls:'tiana',          icon:'🌿', princess:'Inspirada en Tiana',
-    text:'Como Tiana, tú sabes que los sueños no se piden deseos en una estrella: se construyen con trabajo, dedicación y el corazón puesto en cada paso. Eres la prueba de que los sueños hechos con esfuerzo saben mucho <em>más dulce</em>.' },
-  { num:2,  cat:'merida', cls:'merida',          icon:'🏹', princess:'Inspirada en Mérida',
-    text:'Mérida no necesitó que nadie escribiera su historia por ella, y tú tampoco. Con tu arco apuntando al horizonte y tu corazón libre, sigues siendo la <em>autora de tu propio destino</em>.' },
-  { num:3,  cat:'ariel',  cls:'ariel',           icon:'🐚', princess:'Inspirada en Ariel',
-    text:'Como Ariel, tienes esa curiosidad insaciable por descubrir mundos nuevos. Nunca le has tenido miedo a lo desconocido y esa valentía de <em>explorar lo que otros ni se atreven a imaginar</em> es lo que te hace extraordinaria.' },
-  { num:4,  cat:'diana',  cls:'diana',           icon:'👑', princess:'Inspirada en Diana',
-    text:'Princesa Diana demostró que la realeza más verdadera vive en el servicio y en el amor genuino. Tú, igual que ella, tienes ese poder de <em>transformar la vida de quienes te rodean</em> con tu presencia y tu generosidad.' },
-  { num:5,  cat:'tiana',  cls:'tiana',           icon:'🌿', princess:'Inspirada en Tiana',
-    text:'Tiana abrió su restaurante cuando todo parecía imposible. Tú también has levantado tus sueños con tus propias manos, ladrillo a ladrillo. Ese espíritu emprendedor que llevas dentro es <em>tu corona más brillante</em>.' },
-  { num:6,  cat:'merida', cls:'merida',          icon:'🏹', princess:'Inspirada en Mérida',
-    text:'No naciste para seguir caminos ya trazados. Como Mérida, eres capaz de abrir nuevas rutas en el bosque donde otros solo ven árboles. Tu valentía es brújula y <em>tu determinación, el mejor mapa que existe</em>.' },
-  { num:7,  cat:'ariel',  cls:'ariel',           icon:'🐚', princess:'Inspirada en Ariel',
-    text:'Ariel coleccionaba sueños y los guardaba con cariño hasta que llegó el momento de vivirlos. Tú haces lo mismo: cada meta que persigues es <em>una pequeña maravilla que encontraste en el fondo de tu corazón</em>.' },
-  { num:8,  cat:'diana',  cls:'diana',           icon:'👑', princess:'Inspirada en Diana',
-    text:'Diana caminó por el mundo con gracia y con fuerza al mismo tiempo. Tú también llevas esa dualidad hermosa: eres suave como el viento pero <em>firme como la roca</em> cuando algo o alguien que amas lo necesita.' },
-  { num:9,  cat:'tiana',  cls:'tiana',           icon:'🌿', princess:'Inspirada en Tiana',
-    text:'Hay princesas que esperan un rescate y hay princesas que se rescatan a sí mismas. Tú claramente eres del segundo tipo. Como Tiana, <em>tu fuerza no viene de una corona, viene de dentro</em>.' },
-  { num:10, cat:'merida', cls:'merida',          icon:'🏹', princess:'Inspirada en Mérida',
-    text:'El valor de Mérida no estaba en no tener miedo, sino en avanzar a pesar de él. Justo como tú, que enfrentas cada desafío con los ojos bien abiertos y el corazón dispuesto. <em>Eso es valentía de verdad</em>.' },
-  { num:11, cat:'ariel',  cls:'ariel',           icon:'🐚', princess:'Inspirada en Ariel',
-    text:'Como Ariel, siempre has sabido que hay algo más allá del horizonte que vale la pena descubrir. Tu espíritu aventurero y emprendedor te ha llevado a <em>lugares donde pocos se atreven a llegar</em>.' },
-  { num:12, cat:'diana',  cls:'diana',           icon:'👑', princess:'Inspirada en Diana',
-    text:'Diana convirtió su posición en una plataforma para dar voz a quienes no la tenían. Tú también usas tus dones para construir, para alzar, para sumar. <em>Eso te hace una princesa en el más noble de los sentidos</em>.' },
-  { num:13, cat:'tiana',  cls:'tiana',           icon:'🌿', princess:'Inspirada en Tiana',
-    text:'Tiana no se rindió cuando el mundo le cerró las puertas. Tú tampoco. Cada obstáculo que has superado lleva tu sello, y cada logro que has alcanzado lleva tu nombre. <em>Eres la protagonista de tu historia</em>.' },
-  { num:14, cat:'merida', cls:'merida',          icon:'🏹', princess:'Inspirada en Mérida',
-    text:'No necesitas que nadie te salve, ni que nadie te elija, ni que nadie te apruebe. Como Mérida, eres tu propia heroína. Y esa independencia es <em>el regalo más grande que te has dado a ti misma</em>.' },
-  { num:15, cat:'ariel',  cls:'ariel',           icon:'🐚', princess:'Inspirada en Ariel',
-    text:'Ariel intercambió su voz por una oportunidad, pero la tuya nunca la cambies. Tu voz, tus ideas, tu visión son lo que mueve el mundo a tu alrededor. <em>Que siempre resuene fuerte y clara</em>.' },
-  { num:16, cat:'diana',  cls:'diana',           icon:'👑', princess:'Inspirada en Diana',
-    text:'Hay personas que brillan aunque no busquen los reflectores. Diana era así, y tú también. Tu luz no necesita escenario: <em>ilumina a quienes tienen la suerte de estar cerca de ti</em>.' },
-  { num:17, cat:'tiana',  cls:'tiana',           icon:'🌿', princess:'Inspirada en Tiana',
-    text:'Tiana nos enseñó que el secreto no es desear, sino hacer. Tú lo entiendes mejor que nadie: cada madrugada, cada esfuerzo, cada decisión difícil te ha traído hasta donde estás. <em>Y esto es solo el comienzo</em>.' },
-  { num:18, cat:'merida', cls:'merida',          icon:'🏹', princess:'Inspirada en Mérida',
-    text:'Las flechas de Mérida siempre daban en el blanco porque apuntaba con intención. Tú pones esa misma intención en todo lo que haces. Cuando te propones algo, <em>el mundo simplemente se hace a un lado</em>.' },
-  { num:19, cat:'ariel',  cls:'ariel',           icon:'🐚', princess:'Inspirada en Ariel',
-    text:'Como Ariel, llevas dentro de ti un mundo de posibilidades que espera ser descubierto. Cada día que te atreves a ser tú misma, completa y sin excusas, <em>es una aventura que vale más que cualquier tesoro</em>.' },
-  { num:20, cat:'all',    cls:'all-princesses',  icon:'✨', princess:'Las cuatro princesas unidas',
-    text:'Tienes el trabajo ardiente de Tiana, la valentía de Mérida, la curiosidad sin fronteras de Ariel y el corazón generoso de Diana. <em>No eres solo una princesa: eres todas ellas en una.</em> Y eso, simplemente, no tiene igual.' }
+  { num:1, cat:'tiana', cls:'tiana', icon:'🌿', princess:'Inspirada en Tiana',
+    text:'Como Tiana, sabes que los sueños no se le piden a una estrella: se construyen con las manos, se riegan con esfuerzo y se cosechan con el corazón puesto en cada detalle. Tú eres la prueba viva de que lo que se gana con trabajo propio tiene <em>un sabor que nada más puede igualar</em>.' },
+  { num:2, cat:'merida', cls:'merida', icon:'🏹', princess:'Inspirada en Mérida',
+    text:'Mérida nunca esperó que alguien escribiera su historia, y tú tampoco lo has hecho. Desde siempre has tomado el arco con firmeza, apuntado al horizonte y disparado sin dudar. Esa libertad que llevas dentro no es rebeldía, <em>es carácter</em>, y es una de las cosas más hermosas que te definen.' },
+  { num:3, cat:'ariel', cls:'ariel', icon:'🐚', princess:'Inspirada en Ariel',
+    text:'Hay algo en ti que recuerda a Ariel: esa curiosidad que no se apaga, esas ganas de conocer lo que está más allá, de tocar lo que otros ni siquiera se atreven a imaginar. No le has tenido miedo a lo desconocido, y por eso <em>tu mundo es mucho más grande que el de la mayoría</em>.' },
+  { num:4, cat:'diana', cls:'diana', icon:'👑', princess:'Inspirada en Diana',
+    text:'La princesa Diana le enseñó al mundo que la verdadera realeza no vive en los palacios sino en el corazón de quienes eligen servir con amor. Tú tienes ese mismo don: donde llegas, algo cambia para bien. <em>Tu presencia transforma</em>, y eso vale más que cualquier corona.' },
+  { num:5, cat:'tiana', cls:'tiana', icon:'🌿', princess:'Inspirada en Tiana',
+    text:'Tiana levantó su sueño cuando todo parecía cerrarle el camino, y lo hizo a su manera, sin atajos y sin rendirse. Tú has hecho exactamente lo mismo. Cada proyecto que has iniciado, cada idea que has convertido en realidad, <em>lleva tu firma</em>. Ese espíritu emprendedor es tu corona más auténtica.' },
+  { num:6, cat:'merida', cls:'merida', icon:'🏹', princess:'Inspirada en Mérida',
+    text:'No naciste para caminar por senderos que otros trazaron. Como Mérida, tienes la valentía de abrirte paso donde no hay ruta, de encontrar el camino cuando el bosque parece cerrado. <em>Tu determinación no conoce muros</em>, y eso te convierte en alguien verdaderamente extraordinaria.' },
+  { num:7, cat:'ariel', cls:'ariel', icon:'🐚', princess:'Inspirada en Ariel',
+    text:'Ariel guardaba con cariño cada cosa que encontraba, esperando el momento de darle sentido. Tú haces algo parecido con tus sueños: los cuidas, los alimentas y cuando llega el momento, los vives con todo. <em>Cada meta que alcanzas fue primero una chispa que te negaste a apagar</em>.' },
+  { num:8, cat:'diana', cls:'diana', icon:'👑', princess:'Inspirada en Diana',
+    text:'Diana supo caminar por el mundo con una gracia que no excluía la fortaleza. Tú tienes esa misma dualidad: puedes ser el abrazo más cálido y al mismo tiempo la roca más firme. <em>No muchas personas logran eso</em>, y tú lo llevas como algo completamente natural.' },
+  { num:9, cat:'tiana', cls:'tiana', icon:'🌿', princess:'Inspirada en Tiana',
+    text:'Hay un tipo de princesa que espera ser rescatada, y hay otro tipo que decide rescatarse a sí misma. Tú siempre has sido del segundo. Como Tiana, tu fuerza no depende de nadie más, <em>nace de adentro, crece con cada experiencia</em> y no para de sorprender a quienes te conocen.' },
+  { num:10, cat:'merida', cls:'merida', icon:'🏹', princess:'Inspirada en Mérida',
+    text:'Ser valiente no significa no sentir miedo. Mérida lo sabía, y tú también lo vives así. Lo admirable en ti es que avanzas de todas formas, con el corazón acelerado si hace falta, pero sin detenerte. <em>Eso es coraje real, el tipo que no se aprende, el que simplemente se tiene</em>.' },
+  { num:11, cat:'ariel', cls:'ariel', icon:'🐚', princess:'Inspirada en Ariel',
+    text:'Como Ariel, siempre has tenido la certeza de que hay algo más esperándote al otro lado del horizonte. Y en lugar de quedarte mirando, has nadado hacia allá. Tu espíritu aventurero te ha llevado a lugares que otros apenas imaginan, <em>y aún te quedan muchos por descubrir</em>.' },
+  { num:12, cat:'diana', cls:'diana', icon:'👑', princess:'Inspirada en Diana',
+    text:'Diana usó su voz para hablar por quienes no podían hacerlo, y convirtió su historia en un puente hacia los demás. Tú también tienes ese instinto de construir, de alzar, de no quedarte con los brazos cruzados cuando alguien necesita ayuda. <em>Eso es nobleza en su forma más pura</em>.' },
+  { num:13, cat:'tiana', cls:'tiana', icon:'🌿', princess:'Inspirada en Tiana',
+    text:'Tiana conoció el rechazo, las puertas cerradas y los sueños puestos en pausa, y aun así no se dobló. Tú tampoco lo has hecho. Cada obstáculo que superaste lleva tu sello, y cada logro que alcanzaste tiene tu nombre. <em>Nadie te regaló nada, y por eso todo lo que tienes brilla diferente</em>.' },
+  { num:14, cat:'merida', cls:'merida', icon:'🏹', princess:'Inspirada en Mérida',
+    text:'No necesitas que nadie te rescate, ni que nadie te elija, ni que nadie te dé permiso. Como Mérida, eres completamente tuya. Esa independencia que has construido con tanto cuidado no es distancia, <em>es dignidad</em>, y es uno de los regalos más grandes que te has dado a ti misma.' },
+  { num:15, cat:'ariel', cls:'ariel', icon:'🐚', princess:'Inspirada en Ariel',
+    text:'Ariel cambió su voz por una oportunidad, pero la tuya no tiene precio y no está en venta. Lo que piensas, lo que propones, la forma en que ves las cosas, todo eso mueve el mundo a tu alrededor. <em>Que nunca nadie ni nada te quite esa voz</em>, porque cuando habla, vale la pena escuchar.' },
+  { num:16, cat:'diana', cls:'diana', icon:'👑', princess:'Inspirada en Diana',
+    text:'Había algo en Diana que iluminaba cualquier lugar sin que ella lo buscara. Tú tienes eso mismo. No necesitas un escenario ni un título para dejar huella, te basta con estar presente, con mirar a los ojos, con preguntar cómo están de verdad. <em>Esa luz tuya es silenciosa y poderosa al mismo tiempo</em>.' },
+  { num:17, cat:'tiana', cls:'tiana', icon:'🌿', princess:'Inspirada en Tiana',
+    text:'Tiana nos dejó una lección que no se olvida: soñar no es suficiente si no vas detrás. Y tú lo entiendes mejor que nadie. Cada madrugada con propósito, cada decisión difícil, cada paso dado cuando el camino no era fácil, todo eso te trajo hasta aquí. <em>Y esto, todavía, es solo el principio</em>.' },
+  { num:18, cat:'merida', cls:'merida', icon:'🏹', princess:'Inspirada en Mérida',
+    text:'Las flechas de Mérida no fallaban porque apuntaba con intención, con presencia, con toda ella enfocada en el blanco. Tú haces lo mismo en todo lo que emprendes. Cuando decides ir por algo, no hay distracción que te desvíe ni obstáculo que te haga bajar el arco. <em>El mundo simplemente se aparta</em>.' },
+  { num:19, cat:'ariel', cls:'ariel', icon:'🐚', princess:'Inspirada en Ariel',
+    text:'Como Ariel, llevas dentro un universo entero que no siempre se ve a simple vista pero que está ahí, rico y lleno de vida. Cada vez que te permites ser completamente tú misma, sin filtros y sin disculpas, <em>ese mundo sale a la superficie y deja a todos sin palabras</em>.' },
+  { num:20, cat:'all', cls:'all-princesses', icon:'✨', princess:'Las cuatro princesas unidas',
+    text:'Tienes la determinación trabajadora de Tiana, la valentía sin permiso de Mérida, la curiosidad sin fronteras de Ariel y el corazón generoso de Diana. No eres el reflejo de una sola princesa: <em>eres lo mejor de todas ellas reunido en una sola persona</em>. Y eso no es poca cosa. Eso es todo.' }
 ];
 
 let current = 0;
@@ -603,7 +600,7 @@ document.addEventListener('keydown', e => {
 
 let touchStartX = 0;
 document.body.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
-document.body.addEventListener('touchend',   e => {
+document.body.addEventListener('touchend', e => {
   const dx = e.changedTouches[0].clientX - touchStartX;
   if (Math.abs(dx) > 50) dx < 0 ? goTo(current + 1) : goTo(current - 1);
 }, { passive: true });
