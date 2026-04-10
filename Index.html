@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mensajes para una Princesa Real</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --tiana: #1a6b4a;
+    --tiana-light: #d4f0e3;
+    --tiana-mid: #2ea878;
+    --diana: #4a3a8c;
+    --diana-light: #e8e2f8;
+    --diana-mid: #7b68d4;
+    --ariel: #1a5fa0;
+    --ariel-light: #d4e8f8;
+    --ariel-mid: #4a9fd4;
+    --merida: #b04020;
+    --merida-light: #f8e0d4;
+    --merida-mid: #d4602a;
+    --all: #8c2a5a;
+    --all-light: #f4d4e4;
+    --all-mid: #c45080;
+    --gold: #c8a84b;
+    --gold-light: #f5ecd0;
+    --cream: #fdf8f0;
+    --ink: #1a150f;
+    --ink-soft: #4a3f30;
+    --ink-muted: #8a7a68;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    background: var(--cream);
+    color: var(--ink);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse at 20% 20%, rgba(200,168,75,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 80%, rgba(140,42,90,0.05) 0%, transparent 60%),
+      radial-gradient(ellipse at 50% 50%, rgba(26,107,74,0.04) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 5rem;
+  }
+
+  .hero {
+    text-align: center;
+    padding: 3rem 0 3.5rem;
+    position: relative;
+  }
+
+  .hero::before, .hero::after {
+    content: '✦';
+    position: absolute;
+    top: 50%;
+    font-size: 14px;
+    color: var(--gold);
+    opacity: 0.5;
+    transform: translateY(-50%);
+  }
+  .hero::before { left: 0; }
+  .hero::after { right: 0; }
+
+  .hero-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    display: block;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.6rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 0.8rem;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--all);
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--ink-muted);
+    letter-spacing: 0.02em;
+    font-style: italic;
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 2.5rem auto;
+    max-width: 400px;
+  }
+  .divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    opacity: 0.5;
+  }
+  .divider-gem {
+    font-size: 16px;
+    color: var(--gold);
+  }
+
+  .filters {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .filter-btn {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 8px 18px;
+    border: 1px solid rgba(200,168,75,0.35);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink-muted);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .filter-btn:hover {
+    border-color: var(--gold);
+    color: var(--ink);
+    background: var(--gold-light);
+  }
+
+  .filter-btn.active {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: #fff;
+    font-weight: 600;
+  }
+
+  .slider-wrapper { position: relative; }
+
+  .cards-viewport {
+    overflow: hidden;
+    border-radius: 20px;
+  }
+
+  .cards-track {
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+  }
+
+  .msg-card {
+    min-width: 100%;
+    padding: 0.5rem;
+  }
+
+  .card-inner {
+    background: #fff;
+    border-radius: 16px;
+    border: 1px solid rgba(200,168,75,0.2);
+    padding: 3rem 3rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 40px rgba(26,21,15,0.07);
+  }
+
+  .card-inner::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    border-radius: 16px 16px 0 0;
+  }
+  .card-inner::after {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    opacity: 0.06;
+  }
+
+  .tiana .card-inner::before { background: linear-gradient(to right, var(--tiana), var(--tiana-mid)); }
+  .tiana .card-inner::after  { background: var(--tiana); }
+  .diana .card-inner::before { background: linear-gradient(to right, var(--diana), var(--diana-mid)); }
+  .diana .card-inner::after  { background: var(--diana); }
+  .ariel .card-inner::before { background: linear-gradient(to right, var(--ariel), var(--ariel-mid)); }
+  .ariel .card-inner::after  { background: var(--ariel); }
+  .merida .card-inner::before { background: linear-gradient(to right, var(--merida), var(--merida-mid)); }
+  .merida .card-inner::after  { background: var(--merida); }
+  .all-princesses .card-inner::before { background: linear-gradient(to right, var(--all), var(--all-mid)); }
+  .all-princesses .card-inner::after  { background: var(--all); }
+
+  .card-emblem {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px;
+    margin-bottom: 1.2rem;
+  }
+
+  .tiana .card-emblem        { background: var(--tiana-light); }
+  .diana .card-emblem        { background: var(--diana-light); }
+  .ariel .card-emblem        { background: var(--ariel-light); }
+  .merida .card-emblem       { background: var(--merida-light); }
+  .all-princesses .card-emblem { background: var(--all-light); }
+
+  .card-num {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--ink-muted);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .card-princess-name {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+
+  .tiana .card-princess-name         { color: var(--tiana); }
+  .diana .card-princess-name         { color: var(--diana); }
+  .ariel .card-princess-name         { color: var(--ariel); }
+  .merida .card-princess-name        { color: var(--merida); }
+  .all-princesses .card-princess-name { color: var(--all); }
+
+  .card-quote {
+    font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--ink-soft);
+    font-style: italic;
+    max-width: 620px;
+    flex: 1;
+  }
+
+  .card-quote em {
+    font-style: normal;
+    font-weight: 400;
+    color: var(--ink);
+  }
+
+  .card-actions {
+    margin-top: 2rem;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-copy {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 9px 22px;
+    border-radius: 999px;
+    border: 1px solid;
+    cursor: pointer;
+    transition: all 0.25s;
+    background: transparent;
+  }
+
+  .tiana .btn-copy         { color: var(--tiana);  border-color: var(--tiana);  }
+  .tiana .btn-copy:hover   { background: var(--tiana);  color: #fff; }
+  .diana .btn-copy         { color: var(--diana);  border-color: var(--diana);  }
+  .diana .btn-copy:hover   { background: var(--diana);  color: #fff; }
+  .ariel .btn-copy         { color: var(--ariel);  border-color: var(--ariel);  }
+  .ariel .btn-copy:hover   { background: var(--ariel);  color: #fff; }
+  .merida .btn-copy        { color: var(--merida); border-color: var(--merida); }
+  .merida .btn-copy:hover  { background: var(--merida); color: #fff; }
+  .all-princesses .btn-copy       { color: var(--all); border-color: var(--all); }
+  .all-princesses .btn-copy:hover { background: var(--all); color: #fff; }
+
+  .nav-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .nav-btn {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    border: 1px solid rgba(200,168,75,0.4);
+    background: #fff;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--ink-soft);
+    font-size: 18px;
+    transition: all 0.25s;
+    box-shadow: 0 2px 12px rgba(26,21,15,0.06);
+  }
+
+  .nav-btn:hover:not(:disabled) {
+    border-color: var(--gold);
+    background: var(--gold);
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(200,168,75,0.3);
+  }
+
+  .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+  .nav-counter {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    color: var(--ink-muted);
+    min-width: 70px;
+    text-align: center;
+  }
+
+  .dots {
+    display: flex;
+    gap: 7px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+
+  .dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: rgba(200,168,75,0.25);
+    border: 1px solid rgba(200,168,75,0.3);
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .dot.active {
+    background: var(--gold);
+    border-color: var(--gold);
+    transform: scale(1.3);
+  }
+
+  .progress-bar {
+    height: 2px;
+    background: rgba(200,168,75,0.15);
+    border-radius: 2px;
+    margin-top: 1.5rem;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(to right, var(--gold), var(--all-mid));
+    border-radius: 2px;
+    transition: width 0.5s ease;
+  }
+
+  .footer {
+    text-align: center;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(200,168,75,0.2);
+  }
+
+  .footer p {
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+    font-style: italic;
+    letter-spacing: 0.04em;
+  }
+
+  @keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .page { animation: fadeSlideUp 0.7s ease both; }
+
+  .key-hint {
+    text-align: center;
+    font-size: 11px;
+    color: var(--ink-muted);
+    letter-spacing: 0.08em;
+    margin-top: 0.8rem;
+    font-family: 'Cinzel', serif;
+  }
+
+  @media (max-width: 600px) {
+    .card-inner { padding: 2rem 1.5rem 1.8rem; min-height: 380px; }
+    .hero-title { font-size: 1.9rem; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="hero">
+    <span class="hero-eyebrow">Dedicatorias especiales</span>
+    <h1 class="hero-title">Para una <em>Princesa Real</em></h1>
+    <p class="hero-sub">20 mensajes inspirados en las princesas de Disney</p>
+  </div>
+
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-gem">✦</div>
+    <div class="divider-line"></div>
+  </div>
+
+  <div class="filters">
+    <button class="filter-btn active" onclick="setFilter('all', this)">Todas</button>
+    <button class="filter-btn" onclick="setFilter('tiana', this)">Tiana</button>
+    <button class="filter-btn" onclick="setFilter('diana', this)">Diana</button>
+    <button class="filter-btn" onclick="setFilter('ariel', this)">Ariel</button>
+    <button class="filter-btn" onclick="setFilter('merida', this)">Mérida</button>
+  </div>
+
+  <div class="slider-wrapper">
+    <div class="cards-viewport">
+      <div class="cards-track" id="track"></div>
+    </div>
+  </div>
+
+  <div class="progress-bar">
+    <div class="progress-fill" id="progress"></div>
+  </div>
+
+  <div class="nav-row">
+    <button class="nav-btn" id="prev" onclick="goTo(current - 1)" title="Anterior">&#8592;</button>
+    <span class="nav-counter" id="counter">1 / 20</span>
+    <button class="nav-btn" id="next" onclick="goTo(current + 1)" title="Siguiente">&#8594;</button>
+  </div>
+
+  <div class="dots" id="dots"></div>
+
+  <p class="key-hint">← → Flechas del teclado para navegar</p>
+
+  <div class="footer">
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-gem">♛</div>
+      <div class="divider-line"></div>
+    </div>
+    <p>Creado con amor para una mujer valiente y emprendedora</p>
+  </div>
+
+</div>
+
+<script>
+const ALL_MESSAGES = [
+  { num:1,  cat:'tiana',  cls:'tiana',          icon:'🌿', princess:'Inspirada en Tiana',
+    text:'Como Tiana, tú sabes que los sueños no se piden deseos en una estrella: se construyen con trabajo, dedicación y el corazón puesto en cada paso. Eres la prueba de que los sueños hechos con esfuerzo saben mucho <em>más dulce</em>.' },
+  { num:2,  cat:'merida', cls:'merida',          icon:'🏹', princess:'Inspirada en Mérida',
+    text:'Mérida no necesitó que nadie escribiera su historia por ella, y tú tampoco. Con tu arco apuntando al horizonte y tu corazón libre, sigues siendo la <em>autora de tu propio destino</em>.' },
+  { num:3,  cat:'ariel',  cls:'ariel',           icon:'🐚', princess:'Inspirada en Ariel',
+    text:'Como Ariel, tienes esa curiosidad insaciable por descubrir mundos nuevos. Nunca le has tenido miedo a lo desconocido y esa valentía de <em>explorar lo que otros ni se atreven a imaginar</em> es lo que te hace extraordinaria.' },
+  { num:4,  cat:'diana',  cls:'diana',           icon:'👑', princess:'Inspirada en Diana',
+    text:'Princesa Diana demostró que la realeza más verdadera vive en el servicio y en el amor genuino. Tú, igual que ella, tienes ese poder de <em>transformar la vida de quienes te rodean</em> con tu presencia y tu generosidad.' },
+  { num:5,  cat:'tiana',  cls:'tiana',           icon:'🌿', princess:'Inspirada en Tiana',
+    text:'Tiana abrió su restaurante cuando todo parecía imposible. Tú también has levantado tus sueños con tus propias manos, ladrillo a ladrillo. Ese espíritu emprendedor que llevas dentro es <em>tu corona más brillante</em>.' },
+  { num:6,  cat:'merida', cls:'merida',          icon:'🏹', princess:'Inspirada en Mérida',
+    text:'No naciste para seguir caminos ya trazados. Como Mérida, eres capaz de abrir nuevas rutas en el bosque donde otros solo ven árboles. Tu valentía es brújula y <em>tu determinación, el mejor mapa que existe</em>.' },
+  { num:7,  cat:'ariel',  cls:'ariel',           icon:'🐚', princess:'Inspirada en Ariel',
+    text:'Ariel coleccionaba sueños y los guardaba con cariño hasta que llegó el momento de vivirlos. Tú haces lo mismo: cada meta que persigues es <em>una pequeña maravilla que encontraste en el fondo de tu corazón</em>.' },
+  { num:8,  cat:'diana',  cls:'diana',           icon:'👑', princess:'Inspirada en Diana',
+    text:'Diana caminó por el mundo con gracia y con fuerza al mismo tiempo. Tú también llevas esa dualidad hermosa: eres suave como el viento pero <em>firme como la roca</em> cuando algo o alguien que amas lo necesita.' },
+  { num:9,  cat:'tiana',  cls:'tiana',           icon:'🌿', princess:'Inspirada en Tiana',
+    text:'Hay princesas que esperan un rescate y hay princesas que se rescatan a sí mismas. Tú claramente eres del segundo tipo. Como Tiana, <em>tu fuerza no viene de una corona, viene de dentro</em>.' },
+  { num:10, cat:'merida', cls:'merida',          icon:'🏹', princess:'Inspirada en Mérida',
+    text:'El valor de Mérida no estaba en no tener miedo, sino en avanzar a pesar de él. Justo como tú, que enfrentas cada desafío con los ojos bien abiertos y el corazón dispuesto. <em>Eso es valentía de verdad</em>.' },
+  { num:11, cat:'ariel',  cls:'ariel',           icon:'🐚', princess:'Inspirada en Ariel',
+    text:'Como Ariel, siempre has sabido que hay algo más allá del horizonte que vale la pena descubrir. Tu espíritu aventurero y emprendedor te ha llevado a <em>lugares donde pocos se atreven a llegar</em>.' },
+  { num:12, cat:'diana',  cls:'diana',           icon:'👑', princess:'Inspirada en Diana',
+    text:'Diana convirtió su posición en una plataforma para dar voz a quienes no la tenían. Tú también usas tus dones para construir, para alzar, para sumar. <em>Eso te hace una princesa en el más noble de los sentidos</em>.' },
+  { num:13, cat:'tiana',  cls:'tiana',           icon:'🌿', princess:'Inspirada en Tiana',
+    text:'Tiana no se rindió cuando el mundo le cerró las puertas. Tú tampoco. Cada obstáculo que has superado lleva tu sello, y cada logro que has alcanzado lleva tu nombre. <em>Eres la protagonista de tu historia</em>.' },
+  { num:14, cat:'merida', cls:'merida',          icon:'🏹', princess:'Inspirada en Mérida',
+    text:'No necesitas que nadie te salve, ni que nadie te elija, ni que nadie te apruebe. Como Mérida, eres tu propia heroína. Y esa independencia es <em>el regalo más grande que te has dado a ti misma</em>.' },
+  { num:15, cat:'ariel',  cls:'ariel',           icon:'🐚', princess:'Inspirada en Ariel',
+    text:'Ariel intercambió su voz por una oportunidad, pero la tuya nunca la cambies. Tu voz, tus ideas, tu visión son lo que mueve el mundo a tu alrededor. <em>Que siempre resuene fuerte y clara</em>.' },
+  { num:16, cat:'diana',  cls:'diana',           icon:'👑', princess:'Inspirada en Diana',
+    text:'Hay personas que brillan aunque no busquen los reflectores. Diana era así, y tú también. Tu luz no necesita escenario: <em>ilumina a quienes tienen la suerte de estar cerca de ti</em>.' },
+  { num:17, cat:'tiana',  cls:'tiana',           icon:'🌿', princess:'Inspirada en Tiana',
+    text:'Tiana nos enseñó que el secreto no es desear, sino hacer. Tú lo entiendes mejor que nadie: cada madrugada, cada esfuerzo, cada decisión difícil te ha traído hasta donde estás. <em>Y esto es solo el comienzo</em>.' },
+  { num:18, cat:'merida', cls:'merida',          icon:'🏹', princess:'Inspirada en Mérida',
+    text:'Las flechas de Mérida siempre daban en el blanco porque apuntaba con intención. Tú pones esa misma intención en todo lo que haces. Cuando te propones algo, <em>el mundo simplemente se hace a un lado</em>.' },
+  { num:19, cat:'ariel',  cls:'ariel',           icon:'🐚', princess:'Inspirada en Ariel',
+    text:'Como Ariel, llevas dentro de ti un mundo de posibilidades que espera ser descubierto. Cada día que te atreves a ser tú misma, completa y sin excusas, <em>es una aventura que vale más que cualquier tesoro</em>.' },
+  { num:20, cat:'all',    cls:'all-princesses',  icon:'✨', princess:'Las cuatro princesas unidas',
+    text:'Tienes el trabajo ardiente de Tiana, la valentía de Mérida, la curiosidad sin fronteras de Ariel y el corazón generoso de Diana. <em>No eres solo una princesa: eres todas ellas en una.</em> Y eso, simplemente, no tiene igual.' }
+];
+
+let current = 0;
+let filtered = [...ALL_MESSAGES];
+
+function setFilter(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  filtered = cat === 'all' ? [...ALL_MESSAGES] : ALL_MESSAGES.filter(m => m.cat === cat);
+  current = 0;
+  renderAll();
+}
+
+function renderAll() {
+  renderCards();
+  renderDots();
+  updateNav();
+}
+
+function renderCards() {
+  const track = document.getElementById('track');
+  track.innerHTML = filtered.map((m, i) => `
+    <div class="msg-card ${m.cls}" data-idx="${i}">
+      <div class="card-inner">
+        <div class="card-emblem">${m.icon}</div>
+        <span class="card-num">Mensaje ${m.num} de 20</span>
+        <span class="card-princess-name">${m.princess}</span>
+        <p class="card-quote">${m.text}</p>
+        <div class="card-actions">
+          <button class="btn-copy" onclick="copyMsg(${i})">Copiar mensaje</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+  goTo(0, false);
+}
+
+function renderDots() {
+  const dots = document.getElementById('dots');
+  dots.innerHTML = filtered.map((_, i) => `
+    <div class="dot ${i === current ? 'active' : ''}" onclick="goTo(${i})" title="Mensaje ${i+1}"></div>
+  `).join('');
+}
+
+function updateNav() {
+  const total = filtered.length;
+  document.getElementById('counter').textContent = `${current + 1} / ${total}`;
+  document.getElementById('prev').disabled = current === 0;
+  document.getElementById('next').disabled = current === total - 1;
+  const pct = total > 1 ? (current / (total - 1)) * 100 : 100;
+  document.getElementById('progress').style.width = pct + '%';
+  document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
+  document.getElementById('track').style.transform = `translateX(-${current * 100}%)`;
+}
+
+function goTo(idx, animate = true) {
+  if (idx < 0 || idx >= filtered.length) return;
+  current = idx;
+  if (!animate) {
+    const track = document.getElementById('track');
+    track.style.transition = 'none';
+    setTimeout(() => { track.style.transition = ''; }, 50);
+  }
+  updateNav();
+}
+
+function copyMsg(idx) {
+  const plain = filtered[idx].text.replace(/<[^>]+>/g, '');
+  navigator.clipboard.writeText(plain).then(() => {
+    const btn = document.querySelectorAll('.btn-copy')[idx];
+    if (btn) {
+      const orig = btn.textContent;
+      btn.textContent = '¡Copiado! ✓';
+      setTimeout(() => { btn.textContent = orig; }, 2000);
+    }
+  });
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowLeft')  goTo(current - 1);
+  if (e.key === 'ArrowRight') goTo(current + 1);
+});
+
+let touchStartX = 0;
+document.body.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+document.body.addEventListener('touchend',   e => {
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  if (Math.abs(dx) > 50) dx < 0 ? goTo(current + 1) : goTo(current - 1);
+}, { passive: true });
+
+renderAll();
+</script>
+</body>
+</html>
